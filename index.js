@@ -78,7 +78,24 @@ class Person {
 */
 
 class Car {
-  
+  constructor(model, milesPerGallon){
+    this.model = model;
+    this.milesPerGallon = milesPerGallon;
+    this.tank = 0;
+    this.odometer = 0;
+  }
+
+  fill(gallons){
+    this.tank += gallons;
+  }
+
+  drive(distance){
+    this.odometer += distance;
+    this.tank -= distance / this.milesPerGallon;
+    //need to add conditional for running out of fuel
+    //possible with for loop but need to lookup %
+  }
+
 }
 
 /*
@@ -94,7 +111,15 @@ class Car {
         + {name} and {location} of course come from the instance's own properties.
 */
 class Lambdasian {
-  
+  constructor(obj){
+    this.name = obj.name;
+    this.age = obj.age;
+    this.location = obj.location;
+  }
+
+  speak(){
+    return `Hello my name is ${this.name}, I am from ${this.location}`
+  }
 }
 
 /*
