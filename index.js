@@ -90,12 +90,20 @@ class Car {
   }
 
   drive(distance){
-    this.odometer += distance;
-    this.tank -= distance / this.milesPerGallon;
-    //need to add conditional for running out of fuel
-    //possible with for loop but need to lookup %
-  }
+    
+    if(distance > (this.tank * this.milesPerGallon)){
+      this.odometer += this.tank * this.milesPerGallon;
+      const str = `I ran out of fuel at ${(this.tank * this.milesPerGallon)} miles!`;
+      this.tank = 0;
+      return str;
+    }
+    else{
+      this.odometer += distance;
+      this.tank -= distance / this.milesPerGallon;
+    }
 
+  }  
+  
 }
 
 /*
